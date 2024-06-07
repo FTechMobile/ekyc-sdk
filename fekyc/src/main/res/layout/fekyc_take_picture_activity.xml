@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fekyc_color_red">
+
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/cvTakePictureCameraView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cameraAudio="off"
+        app:cameraFlash="off"
+        app:cameraSnapshotMaxHeight="1920"
+        app:cameraSnapshotMaxWidth="1920"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ai.ftech.fekyc.common.widget.overlay.OverlayView
+        android:id="@+id/ovTakePictureFrameCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ov_frame_type="RECTANGLE" />
+
+    <ai.ftech.fekyc.common.widget.toolbar.ToolbarView
+        android:id="@+id/tbvTakePictureHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fbase_dimen_88"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tbv_left_icon_src="@drawable/fekyc_ic_close"
+        app:tbv_right_text_content="@string/fekyc_home_right_title"
+        app:tbv_right_text_text_size="@dimen/fbase_text_size_8"
+        app:tbv_right_type="ICON"
+        app:tbv_title_text_size="@dimen/fbase_text_size_6"
+        tools:tbv_title_text="@string/fekyc_take_picture_take_front" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTakePictureWarningText"
+        style="@style/FBaseStyleText18Regular"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fbase_dimen_70"
+        android:layout_marginHorizontal="@dimen/fbase_dimen_30"
+        android:layout_marginBottom="@dimen/fbase_dimen_12"
+        android:background="@drawable/fekyc_shape_rect_bg_white_alpha_10_corner_10"
+        android:gravity="center"
+        android:textColor="@color/fekyc_color_white"
+        app:layout_constraintBottom_toTopOf="@id/ivTakePictureCapture"
+        tools:text="@string/fekyc_take_picture_warning_take_papers" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTakePictureFlash"
+        android:layout_width="@dimen/fbase_dimen_60"
+        android:layout_height="@dimen/fbase_dimen_60"
+        android:layout_marginEnd="@dimen/fbase_dimen_44"
+        android:src="@drawable/fekyc_ic_flash_off"
+        android:stateListAnimator="@animator/fekyc_scale_down_anim_selector"
+        app:layout_constraintBottom_toBottomOf="@id/ivTakePictureCapture"
+        app:layout_constraintEnd_toStartOf="@id/ivTakePictureCapture"
+        app:layout_constraintTop_toTopOf="@id/ivTakePictureCapture" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTakePictureCapture"
+        android:layout_width="@dimen/fbase_dimen_80"
+        android:layout_height="@dimen/fbase_dimen_80"
+        android:layout_marginBottom="@dimen/fbase_dimen_40"
+        android:src="@drawable/fekyc_ic_capture_on"
+        android:stateListAnimator="@animator/fekyc_scale_down_anim_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTakePictureChangeCamera"
+        android:layout_width="@dimen/fbase_dimen_60"
+        android:layout_height="@dimen/fbase_dimen_60"
+        android:layout_marginStart="@dimen/fbase_dimen_44"
+        android:src="@drawable/fekyc_ic_change_camera"
+        android:stateListAnimator="@animator/fekyc_scale_down_anim_selector"
+        app:layout_constraintBottom_toBottomOf="@id/ivTakePictureCapture"
+        app:layout_constraintStart_toEndOf="@id/ivTakePictureCapture"
+        app:layout_constraintTop_toTopOf="@id/ivTakePictureCapture" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLiveNess"
+        android:layout_width="@dimen/fbase_dimen_340"
+        android:layout_height="@dimen/fbase_dimen_340"
+        android:rotation="45"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLivenessTop"
+            android:layout_width="@dimen/fbase_dimen_170"
+            android:layout_height="@dimen/fbase_dimen_170"
+            android:src="@drawable/ic_progress_1"
+            app:layout_constraintEnd_toStartOf="@+id/ivLivenessRight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLivenessRight"
+            android:layout_width="@dimen/fbase_dimen_170"
+            android:layout_height="@dimen/fbase_dimen_170"
+            android:src="@drawable/ic_progress_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivLivenessTop"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLivenessBottom"
+            android:layout_width="@dimen/fbase_dimen_170"
+            android:layout_height="@dimen/fbase_dimen_170"
+            android:src="@drawable/ic_progress_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivLivenessLeft"
+            app:layout_constraintTop_toBottomOf="@+id/ivLivenessRight" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLivenessLeft"
+            android:layout_width="@dimen/fbase_dimen_170"
+            android:layout_height="@dimen/fbase_dimen_170"
+            android:src="@drawable/ic_progress_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLivenessBottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivLivenessTop" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLivenessRemainingTime"
+        style="@style/FBaseStyleText18Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fbase_dimen_20"
+        android:layout_marginBottom="@dimen/fbase_dimen_20"
+        android:textColor="@color/fekyc_color_white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Còn lại 20s"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTakePictureTransId"
+        style="@style/FBaseStyleText18Regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fbase_dimen_30"
+        android:layout_marginBottom="@dimen/fbase_dimen_12"
+        android:background="@drawable/fekyc_shape_rect_bg_white_alpha_10_corner_10"
+        android:gravity="center"
+        android:paddingVertical="@dimen/fbase_dimen_8"
+        android:textColor="@color/fekyc_color_white"
+        app:layout_constraintTop_toBottomOf="@+id/tbvTakePictureHeader"
+        tools:text="123-123-123" />
+</androidx.constraintlayout.widget.ConstraintLayout>

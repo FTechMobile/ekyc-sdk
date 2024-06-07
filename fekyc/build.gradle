@@ -1,0 +1,119 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'maven-publish'
+}
+
+group = 'com.github.ftechmobile'
+version = '1.0.0'
+
+android {
+    compileSdk androidCompileSdkVersion
+
+    defaultConfig {
+        minSdk androidMinSdkVersion
+        targetSdk androidCompileSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "sdkVersion", "\"1.0.0\""
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+    //region kotlin
+
+    implementation rootProject.ext.kotlinDependencies.kotlin
+    implementation rootProject.ext.refection.kotlin
+    //endregion
+
+    //region kotlin ktx
+    implementation rootProject.ext.androidKTXDependencies.coreKTX
+    implementation rootProject.ext.androidKTXDependencies.fragmentKTX
+    implementation rootProject.ext.androidKTXDependencies.lifecycleKTX
+    implementation rootProject.ext.androidKTXDependencies.livedataKTX
+    implementation rootProject.ext.androidKTXDependencies.viewmodelKTX
+    //endregion
+
+    //region androidx
+    implementation rootProject.ext.androidXDependencies.appCompat
+    implementation rootProject.ext.androidXDependencies.constraintLayout
+    implementation rootProject.ext.androidXDependencies.savedStateViewModel
+    //endregion
+
+    //region test
+    testImplementation rootProject.ext.testDependencies.junit
+    androidTestImplementation rootProject.ext.testDependencies.junitExt
+    androidTestImplementation rootProject.ext.testDependencies.espressoCore
+    //endregion
+
+    //region coroutines
+    implementation rootProject.ext.coroutinesDependencies.core
+    implementation rootProject.ext.coroutinesDependencies.android
+    //endregion
+
+    //region material
+    implementation rootProject.ext.materialDependency.material
+    //endregion
+
+    //region glide
+    implementation rootProject.ext.glideDependency.runtime
+    implementation rootProject.ext.glideDependency.transformation
+    //endregion
+
+    //region network
+    implementation rootProject.ext.networkDependencies.retrofit
+    implementation rootProject.ext.networkDependencies.retrofitGsonConverter
+    implementation rootProject.ext.networkDependencies.retrofitScalarConverter
+    implementation rootProject.ext.networkDependencies.logging
+    //endregion
+
+    //region camera
+    implementation rootProject.ext.cameraViewNatario1Dependencies.cameraview
+    //endregion
+
+    //ml kit
+    implementation rootProject.ext.mlKitDependencies.mlKit
+
+    implementation rootProject.ext.loopViewPagerDependencies.loopViewPager
+
+    implementation rootProject.ext.eventBusDependencies.eventbus
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.ftechmobile'
+                artifactId = 'feykc-android'
+                version = '1.0.0'
+            }
+        }
+    }
+}

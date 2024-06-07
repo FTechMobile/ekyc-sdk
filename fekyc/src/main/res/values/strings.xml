@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fekyc_success">Thành công</string>
+    <string name="fekyc_failure">Thất bại</string>
+    <string name="fekyc_loading">Đang tải…</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="save">Lưu</string>
+    <string name="select_date">Chọn thời gian</string>
+    <string name="fekyc_notification">Thông báo</string>
+    <string name="fekyc_close">Đóng</string>
+    <string name="fekyc_setting">Cài đặt</string>
+
+
+    <string name="fekyc_unknown_error">Không nhận diện được, vui lòng thử lại</string>
+    <string name="fekyc_no_network">Vui lòng kiểm tra lại kết nối và thử lại</string>
+    <string name="fekyc_sever_time_out">Server không phản hồi</string>
+    <string name="fekyc_session_expire">Phiên làm việc hết hạn.</string>
+    <string name="fekyc_session_limit">Đã vượt quá số lần xác thực, vui lòng thử lại sau.</string>
+
+
+
+    <!--region Home Activity-->
+    <string name="fekyc_home_title">Chụp ảnh giấy tờ </string>
+    <string name="fekyc_home_right_title">Trợ giúp</string>
+    <string name="fekyc_home_step_title">Các bước thực hiện</string>
+
+    <string name="fekyc_home_step_1">Lựa chọn loại giấy tờ</string>
+    <string name="fekyc_home_step_2">Chụp ảnh chân dung</string>
+    <string name="fekyc_home_step_3">Xác thực khuôn mặt </string>
+    <string name="fekyc_home_step_4">Kiểm tra lại thông tin cá nhân</string>
+
+
+    <string name="fekyc_home_select_type_of_papers_title">Lựa chọn loại giấy tờ</string>
+    <string name="fekyc_home_select_type_of_papers_ssn">Căn cước công dân / Chứng minh thư</string>
+    <string name="fekyc_home_select_type_of_papers_driver_license">Giấy phép lái xe</string>
+    <string name="fekyc_home_select_type_of_papers_passport">Hộ chiếu Việt Nam</string>
+
+    <string name="fekyc_home_button_continue">Tiếp theo</string>
+    <!--endregion-->
+
+
+
+    <!--region Take Picture Activity-->
+    <string name="fekyc_take_picture_take_front">Chụp mặt trước</string>
+    <string name="fekyc_take_picture_take_back">Chụp mặt sau</string>
+
+    <string name="fekyc_take_picture_image_front">Ảnh mặt trước</string>
+    <string name="fekyc_take_picture_image_back">Ảnh mặt sau</string>
+
+    <string name="fekyc_take_picture_image_portrait">Ảnh chân dung</string>
+
+    <string name="fekyc_take_picture_take_passport">Chụp trang số 2</string>
+    <string name="fekyc_take_picture_image_passport">Ảnh trang số 2</string>
+
+    <string name="fekyc_take_picture_warning_take_papers">Định vị rõ ràng cả 4 góc của mặt trước\ntrong khung hình</string>
+    <string name="fekyc_take_picture_warning_take_papers_back">Định vị rõ ràng cả 4 góc của mặt sau\ntrong khung hình</string>
+    <string name="fekyc_take_picture_warning_take_face">Định vị rõ ràng toàn bộ khuôn mặt trong\nkhung hình</string>
+
+
+    <!--endregion-->
+
+
+    <!--region Warning Dialog-->
+    <string name="fekyc_warning_papers_title">Lưu ý khi chụp giấy tờ tùy thân</string>
+    <string name="fekyc_warning_papers_0">Giấy tờ còn hạn sử dụng, là giấy tờ gốc, không phải scan hoặc photocopy</string>
+    <string name="fekyc_warning_papers_1">Không để ánh sáng lóa giấy tờ khi chụp ảnh</string>
+    <string name="fekyc_warning_papers_2">Không chụp giấy tờ mất góc, bị nhòe</string>
+
+    <string name="fekyc_warning_portrait_title">Giữ điện thoại ngang tầm mắt ở khoảng cách 30–40cm, sau đó thực hiện chụp hình</string>
+    <string name="fekyc_warning_portrait_0">Môi trường đủ sáng</string>
+    <string name="fekyc_warning_portrait_1">Không đeo kính râm</string>
+    <string name="fekyc_warning_portrait_2">Không đeo khẩu trang</string>
+
+    <string name="fekyc_warning_confirm">Ok</string>
+    <!--endregion-->
+
+    <!--region Preview Picture Activity-->
+    <string name="fekyc_preview_picture_take_picture_again">Chụp lại</string>
+    <!--endregion-->
+
+
+    <!--region Confirm Dialog-->
+    <string name="fekyc_confirm_permission_title">Quyền truy cập</string>
+
+    <string name="fekyc_confirm_notification_content">Nếu thoát ra bây giờ, toàn bộ quá trình xác thực sẽ bị huỷ bỏ</string>
+    <string name="fekyc_confirm_permission_content">Vui lòng kích hoạt quyền truy cập máy ảnh trong mục Cài đặt</string>
+
+    <string name="fekyc_confirm_exit">Thoát</string>
+    <string name="fekyc_confirm_stay">Ở lại</string>
+    <string name="fekyc_confirm">Đồng ý</string>
+    <string name="fekyc_retry">Thử lại</string>
+    <!--endregion-->
+
+
+    <!--region Confirm Picture Activity-->
+    <string name="fekyc_confirm_picture_title">Ảnh đã chụp</string>
+    <string name="fekyc_confirm_picture_capture_two_face_papers">Chụp 2 mặt của giấy tờ</string>
+    <string name="fekyc_confirm_picture_portrait_myself">Ảnh chân dung của bạn</string>
+    <string name="fekyc_confirm_picture_valid_photo">Ảnh hợp lệ</string>
+    <string name="fekyc_confirm_picture_continues">Tiếp tục</string>
+    <!--endregion-->
+
+    <!--region Ekyc Info Activity-->
+    <string name="fekyc_ekyc_info_title">Thông tin của bạn</string>
+    <string name="fekyc_ekyc_info_completed">Hoàn tất</string>
+    <string name="fekyc_ekyc_info_select_time">Chọn thời gian</string>
+    <string name="fekyc_ekyc_info_select_issued_by">Chọn nơi cấp giấy tờ</string>
+    <string name="fekyc_ekyc_info_select_gender">Chọn giới tính</string>
+    <string name="fekyc_ekyc_info_gender_male">Nam</string>
+    <string name="fekyc_ekyc_info_gender_female">Nữ</string>
+    <!--endregion-->
+
+    <!--region Noti Network Dialog-->
+    <string name="fekyc_ekyc_noti_network">Ảnh tải lên không thành công.\nVui lòng kiểm tra lại kết nối mạng</string>
+    <!--endregion-->
+
+    <!--region empty error -->
+    <string name="empty_license_key">License Key chưa được nhập</string>
+    <string name="empty_app_id">App ID chưa được nhập</string>
+    <string name="empty_transaction_id">Transaction ID chưa được nhập</string>
+    <string name="empty_field_value">Trường thông tin không được bỏ trống</string>
+    <!--endregion-->
+
+    <!--region token error -->
+    <string name="null_token_register">Ứng dụng chưa được đăng ký Ekyc</string>
+    <!--endregion-->
+
+    <!--region response transaction error -->
+    <string name="null_or_empty_transaction_id">Transaction ID không hợp lệ</string>
+    <string name="null_or_empty_session_id_front">Session ID mặt trước không hợp lệ</string>
+    <string name="null_or_empty_session_id_back">Session ID mặt sau không hợp lệ</string>
+    <string name="null_or_empty_session_id_face">Session ID gương mặt không hợp lệ</string>
+    <string name="null_or_empty_session_id_unknown">Không thể phân loại Session ID</string>
+    <string name="empty_transaction_id_and_session_capture">Transaction ID và Session ID chưa đủ</string>
+    <!--endregion-->
+
+    <!--region response transaction error -->
+    <string name="null_submit_info_request">Chưa có thông tin</string>
+    <!--endregion-->
+
+    <!--region mock text -->
+    <string name="mock_title_card_type">Giấy tờ</string>
+    <!--endregion-->
+
+    <string name="liveness_fill_face">Căn chỉnh khuôn mặt của bạn vào giữa khung</string>
+    <string name="liveness_face_pose_left">Vui lòng quay mặt từ từ sang trái</string>
+    <string name="liveness_face_pose_right">Vui lòng quay mặt từ từ sang phải</string>
+    <string name="liveness_face_pose_up">Vui lòng quay mặt từ từ lên trên</string>
+    <string name="liveness_face_pose_down">Vui lòng quay mặt từ từ xuống dưới</string>
+    <string name="liveness_face_pose_straight">Căn chỉnh khuôn mặt của bạn vào giữa khung và nhìn thẳng </string>
+    <string name="liveness_face_pose_complete">Xác thực hoàn thành </string>
+    <string name="remaining_time_liveness">Còn lại: %ss </string>
+    <string name="remaining_time_liveness_content">Xác thực khuôn mặt vượt quá 60s, vui lòng xác thực lại.</string>
+
+</resources>

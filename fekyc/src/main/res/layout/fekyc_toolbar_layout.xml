@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fbase_dimen_100"
+    android:background="@drawable/fekyc_bg_header"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fbase_dimen_56"
+        android:layout_alignParentBottom="true">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivToolbarLeftIcon"
+            android:layout_width="@dimen/fbase_dimen_56"
+            android:layout_height="@dimen/fbase_dimen_56"
+            android:layout_marginStart="@dimen/fbase_dimen_10"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/fbase_dimen_12"
+            android:stateListAnimator="@animator/fekyc_scale_down_anim_selector"
+            tools:src="@drawable/fekyc_ic_close" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvToolbarCenterTitle"
+            style="@style/FBaseStyleText16Medium"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="@dimen/fbase_dimen_16"
+            android:layout_toStartOf="@id/ivToolbarRightIcon"
+            android:layout_toEndOf="@id/ivToolbarLeftIcon"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@color/fbase_color_white"
+            tools:text="aaa" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvToolbarRightText"
+            style="@style/FBaseStyleText16Regular"
+            android:layout_width="@dimen/fbase_dimen_60"
+            android:layout_height="@dimen/fbase_dimen_36"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/fbase_dimen_24"
+            android:background="?selectableItemBackground"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:visibility="visible"
+            tools:text="Trợ giúp"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivToolbarRightIcon"
+            android:layout_width="@dimen/fbase_dimen_56"
+            android:layout_height="@dimen/fbase_dimen_56"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/fbase_dimen_24"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/fbase_dimen_14"
+            android:src="@drawable/fekyc_ic_question_white"
+            android:stateListAnimator="@animator/fekyc_scale_down_anim_selector"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+</merge>
