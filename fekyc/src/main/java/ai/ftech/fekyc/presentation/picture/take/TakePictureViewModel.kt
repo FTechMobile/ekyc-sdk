@@ -9,6 +9,7 @@ import ai.ftech.fekyc.publish.FTechEkycManager
 import ai.ftech.fekyc.publish.IFTechEkycCallback
 import ai.ftech.fekyc.utils.FileUtils
 import android.graphics.Bitmap
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -31,6 +32,10 @@ class TakePictureViewModel : BaseViewModel() {
         private set
 
     var retakePhotoType: PHOTO_INFORMATION? = null
+
+    var countDownTimer: CountDownTimer? = null
+
+    var remainingTime: Long = 0L
 
     init {
         currentPhotoType = EkycStep.getType()

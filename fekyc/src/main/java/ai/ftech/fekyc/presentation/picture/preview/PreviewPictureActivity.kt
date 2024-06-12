@@ -12,9 +12,11 @@ import ai.ftech.fekyc.domain.model.ekyc.PHOTO_INFORMATION
 import ai.ftech.fekyc.presentation.dialog.WARNING_TYPE
 import ai.ftech.fekyc.presentation.dialog.WarningCaptureDialog
 import ai.ftech.fekyc.presentation.picture.take.EkycStep
+import ai.ftech.fekyc.presentation.picture.take.TakePictureActivity
 import ai.ftech.fekyc.publish.FTechEkycManager
 import ai.ftech.fekyc.utils.ShareFlowEventBus
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageView
@@ -27,6 +29,7 @@ class PreviewPictureActivity : FEkycActivity(R.layout.fekyc_preview_picture_acti
     companion object {
         const val SEND_PREVIEW_IMAGE_KEY = "SEND_PREVIEW_IMAGE_KEY"
         const val SEND_MESSAGE_KEY = "SEND_MESSAGE_KEY"
+        const val RETAKE_PHOTO_TYPE = "retakePhotoType"
     }
 
     private lateinit var tbvHeader: ToolbarView
@@ -70,6 +73,15 @@ class PreviewPictureActivity : FEkycActivity(R.layout.fekyc_preview_picture_acti
         ivImageSrc = findViewById(R.id.ivPreviewPictureImageSrc)
         btnTakeAgain = findViewById(R.id.btnPreviewPictureTakeAgain)
         tvPreviewPictureTransId = findViewById(R.id.tvPreviewPictureTransId)
+
+        val indexRetake = intent.getIntExtra(RETAKE_PHOTO_TYPE, -1)
+        Log.e("indexRetake", indexRetake.toString())
+        viewModel.retakePhotoType = when (indexRetake) {
+            0 -> PHOTO_INFORMATION.FRONT
+            1 -> PHOTO_INFORMATION.BACK
+            2 -> PHOTO_INFORMATION.FACE
+            else -> null
+        }
 
         tbvHeader.setTitle(getToolbarTitleByEkycType())
         tvMessage.text = viewModel.message
@@ -116,7 +128,7 @@ class PreviewPictureActivity : FEkycActivity(R.layout.fekyc_preview_picture_acti
     }
 
     private fun getToolbarTitleByEkycType(): String {
-        return when (EkycStep.getCurrentStep()) {
+        return when (viewModel.retakePhotoType ?: EkycStep.getCurrentStep()) {
             PHOTO_INFORMATION.FRONT -> getAppString(R.string.fekyc_take_picture_take_front)
             PHOTO_INFORMATION.BACK -> getAppString(R.string.fekyc_take_picture_take_back)
             PHOTO_INFORMATION.FACE -> getAppString(R.string.fekyc_take_picture_image_portrait)

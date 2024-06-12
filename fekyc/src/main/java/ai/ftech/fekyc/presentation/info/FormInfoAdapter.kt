@@ -81,7 +81,8 @@ class FormInfoAdapter : ai.ftech.fekyc.base.adapter.BaseAdapter() {
 
         override fun onBind(data: FormInfoDisplay) {
             tvTitle.text = data.getTitle()
-            edtValue.setText(data.getValue())
+            val newValue = data.getValue()?.replace("\\n", ", ")
+            edtValue.setText(newValue)
             ivIcon.setImageDrawable(data.getIcon())
             checkStateFormHasEditable(data)
         }

@@ -31,6 +31,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.tasks.Tasks
 import com.google.mlkit.vision.common.InputImage
@@ -81,6 +82,7 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
     private var poseDatas = arrayListOf(FACE_POSE.LEFT, FACE_POSE.DOWN, FACE_POSE.RIGHT, FACE_POSE.UP, FACE_POSE.STRAIGHT)
     private var position = -1
     private var isBlockChecking = false
+    var indexRetake = -1
 
     override fun setupStatusBar(): StatusBar {
         return StatusBar(color = R.color.fbase_color_black, isDarkText = false)
@@ -106,12 +108,13 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
         super.onDestroy()
         cvCameraView.close()
         warningDialog = null
+        countDownTimer?.cancel()
     }
 
     @SuppressLint("SetTextI18n")
     override fun onInitView() {
         super.onInitView()
-        val indexRetake = intent.getIntExtra(RETAKE_PHOTO_TYPE, -1)
+        indexRetake = intent.getIntExtra(RETAKE_PHOTO_TYPE, -1)
         viewModel.retakePhotoType = when (indexRetake) {
             0 -> PHOTO_INFORMATION.FRONT
             1 -> PHOTO_INFORMATION.BACK
@@ -188,7 +191,6 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
         ivCapture.setOnSafeClick {
             cvCameraView.takePictureSnapshot()
             showLoading()
-            countDownTimer?.cancel()
         }
 
         ivChangeCamera.setOnSafeClick {
@@ -241,16 +243,19 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
                         Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
+
                 UPLOAD_STATUS.SUCCESS -> {
                     viewModel.clearUploadPhotoValue()
                     navigateToTakePictureScreen()
                 }
+
                 UPLOAD_STATUS.COMPLETE -> {
                     finish()
                     EventBus.getDefault().post(MessageEvent())
                     if (viewModel.retakePhotoType == null)
                         navigateTo(ConfirmPictureActivity::class.java)
                 }
+
                 UPLOAD_STATUS.NONE -> {}
                 else -> {}
             }
@@ -261,12 +266,14 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
                 UPLOAD_STATUS.FAIL -> {
                     showLivenessError(it.exception?.message)
                 }
+
                 UPLOAD_STATUS.SUCCESS -> {
                     setProgressLiveness(true)
                     setTextGuideLiveness()
                     isBlockChecking = false
                     viewModel.clearFrame()
                 }
+
                 UPLOAD_STATUS.NONE -> {}
                 else -> {}
             }
@@ -306,7 +313,7 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
     }
 
     private fun navigateToPreviewScreen(path: String, message: String? = null) {
-        navigateTo(PreviewPictureActivity::class.java) { intent ->
+        navigateTo(PreviewPictureActivity::class.java, bundle = bundleOf(RETAKE_PHOTO_TYPE to indexRetake)) { intent ->
             intent.putExtra(PreviewPictureActivity.SEND_PREVIEW_IMAGE_KEY, path)
             intent.putExtra(PreviewPictureActivity.SEND_MESSAGE_KEY, message)
         }
@@ -320,6 +327,7 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
                 setEnableCameraFace(false)
                 setFrameMlKit()
             }
+
             PHOTO_INFORMATION.BACK, PHOTO_INFORMATION.FRONT, PHOTO_INFORMATION.PAGE_NUMBER_2 -> {
                 cvCameraView.facing = Facing.BACK
                 isFrontFace = false
@@ -456,10 +464,12 @@ class TakePictureActivity : FEkycActivity(R.layout.fekyc_take_picture_activity) 
                 tvWarningText.text = getAppString(R.string.fekyc_take_picture_warning_take_papers)
                 WARNING_TYPE.PAPERS
             }
+
             PHOTO_INFORMATION.BACK -> {
                 tvWarningText.text = getAppString(R.string.fekyc_take_picture_warning_take_papers_back)
                 WARNING_TYPE.PAPERS
             }
+
             PHOTO_INFORMATION.FACE -> {
                 ovFrameCrop.apply {
                     setCropType(OverlayView.CROP_TYPE.CIRCLE)
